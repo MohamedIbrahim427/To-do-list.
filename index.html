@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>To do list</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container" id="mainPage">
+  <!-- Settings Button -->
+  <button id="settingsBtn">&#9881;</button>
+  
+  <h1>To-Do List</h1>
+  <input type="text" id="taskInput" placeholder="Add a new task..." />
+  <input type="datetime-local" id="dateTimeInput" />
+  <button id="addTaskBtn">Add Task</button>
+  <button id="doneBtn">Done</button> <!-- Done button -->
+
+  <ul id="taskList"></ul>
+</div>
+
+<!-- New Task List Page (Initially hidden) -->
+<div id="taskListPage" style="display: none;">
+  <h2>Task List</h2>
+  <ul id="taskListWithCheckboxes"></ul>
+  <button id="finishPageBtn">Finish</button>
+</div>
+
+<!-- Modal for Settings -->
+<div id="settingsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModalBtn">&times;</span>
+    <h2>Settings</h2>
+    <div>
+      <label for="themeSelect">Select Theme:</label>
+      <select id="themeSelect">
+        <option value="light">Light Mode</option>
+        <option value="dark">Dark Mode</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

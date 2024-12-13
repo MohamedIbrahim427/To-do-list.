@@ -1,0 +1,344 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+  color: #73756b; /* Set color for the h1 text */
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+input, button {
+  width: 97%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input {
+  width: calc(100% - 20px); /* Adjust for padding */
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+li button {
+  background-color: #f44336;
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  width: auto; /* Allow buttons to shrink to their content */
+  margin-left: 5px; /* Space between the buttons */
+  display: inline-block; /* Ensure buttons stay on the same line */
+}
+
+li button:hover {
+  background-color: #e53935;
+}
+
+li .buttons-container {
+  display: flex;  /* Align buttons horizontally */
+  gap: 10px; /* Adds space between the buttons */
+}
+
+/* Modal Styles */
+#settingsModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Black with transparency */
+  padding-top: 60px;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background-color: #83857b;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+  background-color: #f4f4f4;
+  color: #333; /* Black text color in light mode */
+}
+
+.container.light-mode {
+  background-color: #fff;
+}
+
+button.light-mode {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.light-mode:hover {
+  background-color: #45a049;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #111;
+  color: #f4f4f4;  /* White text color in dark mode */
+}
+
+.container.dark-mode {
+  background-color: #222;
+}
+
+button.dark-mode {
+  background-color: #444;
+  color: white;
+}
+
+button.dark-mode:hover {
+  background-color: #666;
+}
+
+h1.dark-mode, 
+input.dark-mode, 
+button.dark-mode, 
+ul.dark-mode, 
+li.dark-mode, 
+#settingsModal.dark-mode, 
+.modal-content.dark-mode {
+  color: #f4f4f4;  /* Ensure all text is light in dark mode */
+}
+
+#settingsModal.dark-mode {
+  background-color: rgba(0, 0, 0, 0.6); /* Darker background for the modal */
+}
+
+.modal-content.dark-mode {
+  background-color: #333;  /* Dark background for modal content */
+  color: #f4f4f4;  /* Light text color for modal content */
+}
+
+/* Settings Button */
+#settingsBtn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;  /* Smaller padding for a compact button */
+  background-color: #07bff;
+  color: white;
+  border: none;
+  border-radius: 60%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;  /* Set width and height to make it round */
+  height: 40px;
+}
+
+#settingsBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Add Task and Done Buttons styling */
+#addTaskBtn, #doneBtn {
+  width:543px;  /* Allow buttons to shrink to their content */
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#doneBtn {
+  background-color: #ff9800;
+  color: white;
+}
+
+#doneBtn:hover {
+  background-color: #f57c00;
+}
+
+/* Button container to position Add and Done buttons side by side */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Adds space between the buttons */
+}
+
+/* Task List Page */
+#taskListPage {
+  display: none;
+  padding: 20px;
+}
+
+#taskListPage ul {
+  list-style-type: none;
+}
+
+#taskListPage .taskItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#taskListPage .taskItem button {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+#finishBtn {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#finishBtn:hover {
+  background-color: #45a049;
+}
+
+/* Confirm Finish Modal */
+#confirmFinishModal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 60px;
+}
+
+.confirmFinishContent {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  width: 50%;
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.confirmFinishContent button {
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+#confirmFinishModal .close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#confirmFinishModal .close-btn:hover,
+#confirmFinishModal .close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  input, button {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  li {
+    font-size: 0.9rem;
+  }
+
+  li button {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
